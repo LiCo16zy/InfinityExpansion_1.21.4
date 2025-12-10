@@ -159,7 +159,7 @@ public final class Machines {
             "&7将矿粉变为锭",
             "",
             MachineLore.speed(16),
-            MachineLore.energyPerSecond(7200)
+            MachineLore.energyPerSecond(4800)
     );
     public static final SlimefunItemStack URANIUM_EXTRACTOR = new SlimefunItemStack(
             "URANIUM_EXTRACTOR",
@@ -364,6 +364,7 @@ public final class Machines {
         crops.put(Material.BAMBOO, new ItemStack[] { new ItemStack(Material.BAMBOO, 6) });
         crops.put(Material.CHORUS_FLOWER, new ItemStack[] { new ItemStack(Material.CHORUS_FRUIT, 6) });
         crops.put(Material.NETHER_WART, new ItemStack[] { new ItemStack(Material.NETHER_WART, 2) });
+        crops.put(Material.SWEET_BERRIES, new ItemStack[] { new ItemStack(Material.SWEET_BERRIES, 2)});
 
         new GrowingMachine(Groups.BASIC_MACHINES, BASIC_GROWER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
                 new ItemStack(Material.GLASS), new ItemStack(Material.GLASS), new ItemStack(Material.GLASS),
@@ -409,6 +410,21 @@ public final class Machines {
         });
         trees.put(Material.CRIMSON_FUNGUS, new ItemStack[] {
                 new ItemStack(Material.CRIMSON_HYPHAE, 8), new ItemStack(Material.CRIMSON_STEM, 6), new ItemStack(Material.WEEPING_VINES)
+        });
+        trees.put(Material.CHERRY_SAPLING, new ItemStack[] {
+            new ItemStack(Material.CHERRY_LEAVES, 8), new ItemStack(Material.CHERRY_LOG, 6)
+        });
+        trees.put(Material.MANGROVE_PROPAGULE, new ItemStack[] {
+            new ItemStack(Material.MANGROVE_LEAVES, 8), new ItemStack(Material.MANGROVE_LOG, 6), new ItemStack(Material.MANGROVE_ROOTS), new ItemStack(Material.MANGROVE_PROPAGULE)
+        });
+        trees.put(Material.PALE_OAK_SAPLING, new ItemStack[] {
+            new ItemStack(Material.PALE_OAK_LEAVES, 8), new ItemStack(Material.PALE_OAK_LOG, 6), new ItemStack(Material.RESIN_CLUMP)
+        });
+        trees.put(Material.AZALEA, new ItemStack[] {
+            new ItemStack(Material.AZALEA_LEAVES, 8), new ItemStack(Material.OAK_LOG, 6)
+        });
+        trees.put(Material.FLOWERING_AZALEA, new ItemStack[] {
+            new ItemStack(Material.FLOWERING_AZALEA_LEAVES, 8), new ItemStack(Material.OAK_LOG, 6)
         });
 
         new GrowingMachine(Groups.BASIC_MACHINES, BASIC_TREE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
@@ -519,16 +535,16 @@ public final class Machines {
                 Materials.VOID_INGOT, Materials.INFINITE_INGOT, INGOT_FORMER, INGOT_FORMER, Materials.INFINITE_INGOT, Materials.VOID_INGOT,
                 Materials.VOID_INGOT, Materials.INFINITE_INGOT, INGOT_FORMER, INGOT_FORMER, Materials.INFINITE_INGOT, Materials.VOID_INGOT,
                 Materials.VOID_INGOT, Materials.VOID_INGOT, Materials.VOID_INGOT, Materials.VOID_INGOT, Materials.VOID_INGOT, Materials.VOID_INGOT,
-        }).addRecipe(new SlimefunItemStack(SlimefunItems.COPPER_INGOT, 32), new SlimefunItemStack(SlimefunItems.COPPER_DUST, 64))
-                .addRecipe(new SlimefunItemStack(SlimefunItems.ZINC_INGOT, 32), new SlimefunItemStack(SlimefunItems.ZINC_DUST, 64))
-                .addRecipe(new SlimefunItemStack(SlimefunItems.TIN_INGOT, 32), new SlimefunItemStack(SlimefunItems.TIN_DUST, 64))
-                .addRecipe(new SlimefunItemStack(SlimefunItems.ALUMINUM_INGOT, 32), new SlimefunItemStack(SlimefunItems.ALUMINUM_DUST, 64))
-                .addRecipe(new SlimefunItemStack(SlimefunItems.LEAD_INGOT, 32), new SlimefunItemStack(SlimefunItems.LEAD_DUST, 64))
-                .addRecipe(new SlimefunItemStack(SlimefunItems.SILVER_INGOT, 32), new SlimefunItemStack(SlimefunItems.SILVER_DUST, 64))
-                .addRecipe(new SlimefunItemStack(SlimefunItems.GOLD_24K, 10), new SlimefunItemStack(SlimefunItems.GOLD_DUST, 64))
-                .addRecipe(new ItemStack(Material.IRON_INGOT, 32), new SlimefunItemStack(SlimefunItems.IRON_DUST, 64))
-                .addRecipe(new SlimefunItemStack(SlimefunItems.MAGNESIUM_INGOT, 32), new SlimefunItemStack(SlimefunItems.MAGNESIUM_DUST, 64))
-                .ticksPerOutput(1).energyPerTick(7200).register(plugin);
+        }).addRecipe(new SlimefunItemStack(SlimefunItems.COPPER_INGOT, 64), new SlimefunItemStack(SlimefunItems.COPPER_DUST, 64))
+                .addRecipe(new SlimefunItemStack(SlimefunItems.ZINC_INGOT, 64), new SlimefunItemStack(SlimefunItems.ZINC_DUST, 64))
+                .addRecipe(new SlimefunItemStack(SlimefunItems.TIN_INGOT, 64), new SlimefunItemStack(SlimefunItems.TIN_DUST, 64))
+                .addRecipe(new SlimefunItemStack(SlimefunItems.ALUMINUM_INGOT, 64), new SlimefunItemStack(SlimefunItems.ALUMINUM_DUST, 64))
+                .addRecipe(new SlimefunItemStack(SlimefunItems.LEAD_INGOT, 64), new SlimefunItemStack(SlimefunItems.LEAD_DUST, 64))
+                .addRecipe(new SlimefunItemStack(SlimefunItems.SILVER_INGOT, 64), new SlimefunItemStack(SlimefunItems.SILVER_DUST, 64))
+                .addRecipe(new SlimefunItemStack(SlimefunItems.GOLD_24K, 16), new SlimefunItemStack(SlimefunItems.GOLD_DUST, 64))
+                .addRecipe(new ItemStack(Material.IRON_INGOT, 64), new SlimefunItemStack(SlimefunItems.IRON_DUST, 64))
+                .addRecipe(new SlimefunItemStack(SlimefunItems.MAGNESIUM_INGOT, 64), new SlimefunItemStack(SlimefunItems.MAGNESIUM_DUST, 64))
+                .ticksPerOutput(1).energyPerTick(4800).register(plugin);
 
         new MachineBlock(Groups.ADVANCED_MACHINES, URANIUM_EXTRACTOR, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
                 SlimefunItems.ELECTRIC_ORE_GRINDER_2, SlimefunItems.ELECTRIC_ORE_GRINDER_2, SlimefunItems.ELECTRIC_ORE_GRINDER_2,
