@@ -2,19 +2,13 @@
 
 此附属增加了许多的游戏后期物品，比如需要消耗大量资源的"无尽锭"。无尽锭可以用来制作功能强大的装备与机器。
 
+## 当前 Fork 说明
+
+自用构建，添加了新版本的几种植物到自动农场和植树机器里；修改了无尽铸锭机的配置。
+
 ## 下载
 
 点击这里下载 InfinityExpansion: [下载 InfinityExpansion](https://builds.guizhanss.net/SlimefunGuguProject/InfinityExpansion/master)
-
-<p align="center">
-  <a href="https://github.com/SlimefunGuguProject/InfinityExpansion/actions/workflows/maven.yml">
-    <img src="https://github.com/SlimefunGuguProject/InfinityExpansion/actions/workflows/maven.yml/badge.svg" alt="Java CI"/>
-  </a>
-
-  <a href="https://builds.guizhanss.net/SlimefunGuguProject/InfinityExpansion/master">
-    <img src="https://builds.guizhanss.net/f/SlimefunGuguProject/InfinityExpansion/master/badge.svg" alt="Build status"/>
-  </a>
-</p>
 
 ## Bug/建议
 
