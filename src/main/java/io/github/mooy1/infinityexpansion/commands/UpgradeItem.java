@@ -19,7 +19,7 @@ import io.github.mooy1.infinityexpansion.items.storage.StorageUnit;
 import io.github.mooy1.infinitylib.commands.SubCommand;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 
-import net.guizhanss.guizhanlib.common.Cooldown;
+import io.github.thebusybiscuit.slimefun4.libraries.guizhanlib.common.Cooldown;
 
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;

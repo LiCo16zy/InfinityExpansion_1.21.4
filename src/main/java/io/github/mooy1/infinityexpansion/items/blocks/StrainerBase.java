@@ -201,7 +201,7 @@ public final class StrainerBase extends TickingMenuBlock implements RecipeDispla
 
         //reduce durability
 
-        if (random.nextInt(strainer.getEnchantmentLevel(Enchantment.DURABILITY) + 3 * strainer.getEnchantmentLevel(Enchantment.MENDING) + 1) == 0) {
+        if (random.nextInt(strainer.getEnchantmentLevel(Enchantment.UNBREAKING) + 3 * strainer.getEnchantmentLevel(Enchantment.MENDING) + 1) == 0) {
             ItemMeta itemMeta = strainer.getItemMeta();
             Damageable durability = (Damageable) itemMeta;
 

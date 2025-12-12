@@ -22,7 +22,7 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.Randomized
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 
 import net.guizhanss.guizhanlib.minecraft.helper.entity.EntityTypeHelper;
-import net.guizhanss.guizhanlib.utils.StringUtil;
+import io.github.thebusybiscuit.slimefun4.libraries.guizhanlib.common.utils.StringUtil;
 
 /**
  * A mob data card which will be able to be used in the {@link MobSimulationChamber}

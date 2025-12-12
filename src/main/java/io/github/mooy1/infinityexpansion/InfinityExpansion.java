@@ -5,7 +5,7 @@ import java.util.logging.Level;
 
 import javax.annotation.Nonnull;
 
-import net.guizhanss.guizhanlibplugin.updater.GuizhanUpdater;
+import io.github.thebusybiscuit.slimefun4.libraries.guizhanlib.updater.GuizhanBuildsUpdater ;
 
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
@@ -32,7 +32,6 @@ import io.github.mooy1.infinitylib.core.AbstractAddon;
 import io.github.mooy1.infinitylib.metrics.bukkit.Metrics;
 import io.github.mooy1.infinitylib.metrics.charts.SimplePie;
 
-import net.guizhanss.guizhanlibplugin.updater.GuizhanBuildsUpdaterWrapper;
 import net.guizhanss.slimefun4.utils.WikiUtils;
 
 public final class InfinityExpansion extends AbstractAddon {
@@ -55,7 +54,14 @@ public final class InfinityExpansion extends AbstractAddon {
         metrics.addCustomChart(new SimplePie("auto_updates", () -> autoUpdates));
 
         if (enableAutoUpdate && getDescription().getVersion().startsWith("Build")) {
-            GuizhanUpdater.start(this, getFile(), "SlimefunGuguProject", "InfinityExpansion", "master");
+            GuizhanBuildsUpdater.start(this, getFile(), "SlimefunGuguProject", "InfinityExpansion", "master");
+        }
+
+        if (!getServer().getPluginManager().isPluginEnabled("GuizhanLibPlugin")) {
+            getLogger().log(Level.SEVERE, "本插件需要 鬼斩前置库插件(GuizhanLibPlugin) 才能运行!");
+            getLogger().log(Level.SEVERE, "从此处下载: https://50l.cc/gzlib");
+            getServer().getPluginManager().disablePlugin(this);
+            return;
         }
 
         Plugin lx = getServer().getPluginManager().getPlugin("LiteXpansion");

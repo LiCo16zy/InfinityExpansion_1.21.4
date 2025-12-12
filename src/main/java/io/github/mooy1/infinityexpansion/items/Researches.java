@@ -72,7 +72,7 @@ public final class Researches {
         );
         create(9, "starter_machines", "初始机器", 15,
                 Machines.BASIC_COBBLE, Machines.BASIC_GROWER,
-                Machines.BASIC_TREE, Quarries.BASIC_QUARRY
+                Machines.BASIC_TREE, Quarries.BASIC_QUARRY, Machines.BASIC_FLOWER
         );
         create(10, "strainers", "滤网", 10,
                 Blocks.STRAINER_BASE, Materials.BASIC_STRAINER,
@@ -90,7 +90,7 @@ public final class Researches {
                 Machines.DUST_EXTRACTOR, Machines.EXTREME_FREEZER, Machines.GEO_QUARRY,
                 Machines.DECOMPRESSOR, Machines.STONEWORKS_FACTORY, Machines.BASIC_OBSIDIAN,
                 Machines.INGOT_FORMER, Blocks.ADVANCED_ANVIL, Machines.URANIUM_EXTRACTOR,
-                Machines.GEAR_TRANSFORMER
+                Machines.GEAR_TRANSFORMER, Machines.ADVANCED_FLOWER
         );
         create(14, "upgraded_machines", "升级机器", 40,
                 SlimefunExtension.ADVANCED_CHARGER, SlimefunExtension.ADVANCED_ENCHANTER,
@@ -104,7 +104,7 @@ public final class Researches {
                 Generators.INFINITE_PANEL, Generators.INFINITY_REACTOR, Storage.INFINITY_STORAGE,
                 SlimefunExtension.INFINITY_CAPACITOR, SlimefunExtension.INFINITY_CHARGER,
                 SlimefunExtension.INFINITY_DISENCHANTER, SlimefunExtension.INFINITY_ENCHANTER,
-                Quarries.INFINITY_QUARRY, Machines.INFINITY_DUST_EXTRACTOR
+                Quarries.INFINITY_QUARRY, Machines.INFINITY_DUST_EXTRACTOR, Machines.INFINITY_FLOWER
         );
         create(16, "void_upgrades", "虚空升级", 45,
                 Generators.VOID_PANEL, SlimefunExtension.VOID_CAPACITOR, Storage.VOID_STORAGE,
