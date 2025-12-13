@@ -4,11 +4,7 @@
 
 ## 当前 Fork 说明
 
-自用构建，添加了新版本的几种植物到自动农场和植树机器里；修改了无尽铸锭机的配置。
-
-## 下载
-
-点击这里下载 InfinityExpansion: [下载 InfinityExpansion](https://builds.guizhanss.net/SlimefunGuguProject/InfinityExpansion/master)
+自用构建，更新了部分依赖，添加和修改了部分机器配置。
 
 ## Bug/建议
 
