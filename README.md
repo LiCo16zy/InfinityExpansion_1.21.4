@@ -2,19 +2,9 @@
 
 此附属增加了许多的游戏后期物品，比如需要消耗大量资源的"无尽锭"。无尽锭可以用来制作功能强大的装备与机器。
 
-## 下载
+## 当前 Fork 说明
 
-点击这里下载 InfinityExpansion: [下载 InfinityExpansion](https://builds.guizhanss.net/SlimefunGuguProject/InfinityExpansion/master)
-
-<p align="center">
-  <a href="https://github.com/SlimefunGuguProject/InfinityExpansion/actions/workflows/maven.yml">
-    <img src="https://github.com/SlimefunGuguProject/InfinityExpansion/actions/workflows/maven.yml/badge.svg" alt="Java CI"/>
-  </a>
-
-  <a href="https://builds.guizhanss.net/SlimefunGuguProject/InfinityExpansion/master">
-    <img src="https://builds.guizhanss.net/f/SlimefunGuguProject/InfinityExpansion/master/badge.svg" alt="Build status"/>
-  </a>
-</p>
+自用构建，更新了部分依赖，添加和修改了部分机器配置。
 
 ## Bug/建议
 
