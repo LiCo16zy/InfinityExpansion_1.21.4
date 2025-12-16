@@ -192,7 +192,7 @@ public final class MobData {
                 new ItemStack(Material.REDSTONE_BLOCK, 64), new ItemStack(Material.GLASS, 64), new ItemStack(Material.SUGAR, 64),
                 new ItemStack(Material.GLOWSTONE, 64), EMPTY_DATA_CARD, new ItemStack(Material.GLOWSTONE, 64),
                 new ItemStack(Material.SUGAR, 64), new ItemStack(Material.GLASS, 64), new ItemStack(Material.REDSTONE_BLOCK, 64)
-        }).addDrop(Material.SUGAR, 1).addDrop(Material.REDSTONE, 1)
+        }).addDrop(Material.SUGAR, 1).addDrop(Material.REDSTONE, 4, 1)
                 .addDrop(Material.GLASS_BOTTLE, 1).addDrop(Material.GLOWSTONE_DUST, 1).register(plugin);
     }
 
