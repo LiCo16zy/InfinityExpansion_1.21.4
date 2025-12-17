@@ -127,7 +127,7 @@ public final class Researches {
                 MobData.CREEPER, MobData.GUARDIAN, MobData.WITCH
         );
         create(22, "advanced_mob_data", "进阶生物芯片", 45,
-                MobData.WITHER_SKELETON, MobData.ENDERMEN, MobData.IRON_GOLEM, MobData.BLAZE
+                MobData.WITHER_SKELETON, MobData.ENDERMAN, MobData.IRON_GOLEM, MobData.BLAZE
         );
         create(23, "boss_mob_data", "首领生物芯片", 60,
                 MobData.WITHER, MobData.ENDER_DRAGON

@@ -35,11 +35,7 @@ public final class MobDataCard extends SlimefunItem implements RecipeDisplayItem
     private static final String WIKI_PAGE = "mob-simulation";
 
     public static SlimefunItemStack create(String id, MobDataTier tier) {
-        // 血压起来了
         String rawId = StringUtil.dehumanize(id);
-        if (id.equalsIgnoreCase("Endermen")) {
-            id = "Enderman";
-        }
 
         String name = EntityTypeHelper.getName(StringUtil.dehumanize(id));
 

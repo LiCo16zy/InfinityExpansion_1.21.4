@@ -13,7 +13,7 @@ public enum MobDataTier {
     // ex: zombie
     HOSTILE(2, 300, Material.DIAMOND_CHESTPLATE),
 
-    // ex: endermen
+    // ex: enderman
     ADVANCED(4, 600, Material.DIAMOND_CHESTPLATE),
 
     // ex: wither
