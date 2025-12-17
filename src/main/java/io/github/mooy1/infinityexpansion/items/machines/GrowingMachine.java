@@ -55,8 +55,18 @@ public final class GrowingMachine extends AbstractMachineBlock implements Recipe
             if (InfinityExpansion.slimefunTickCount() % this.ticksPerOutput == 0) {
                 ItemStack[] output = this.recipes.get(input.getType());
                 if (output != null) {
+                    boolean hasAnyOutput = false;
                     for (ItemStack item : output) {
-                        menu.pushItem(item.clone(), OUTPUT_SLOTS);
+                        ItemStack itemCopy = menu.pushItem(item.clone(), OUTPUT_SLOTS);
+                        if (itemCopy == null || item.getAmount() > itemCopy.getAmount()) {
+                            hasAnyOutput = true;
+                        }
+                    }
+                    if (!hasAnyOutput) {
+                        if (menu.hasViewer()) {
+                            menu.replaceExistingItem(STATUS_SLOT, NO_ROOM_ITEM);
+                        }
+                        return false;
                     }
                 }
             }
