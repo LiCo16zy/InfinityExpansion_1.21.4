@@ -299,6 +299,15 @@ public final class Machines {
         MachineLore.speed(8),
         MachineLore.energyPerSecond(80)
     );
+    public static final SlimefunItemStack GRAVITY_REPLICATOR = new SlimefunItemStack(
+        "GRAVITY_REPLICATOR",
+        Material.LIGHT_GRAY_CONCRETE,
+        "&8重力复制机",
+        "&7获取大量重力方块",
+        "",
+        MachineLore.speed(8),
+        MachineLore.energyPerSecond(180)
+    );
 
     public static void setup(InfinityExpansion plugin) {
         new VoidHarvester(Groups.ADVANCED_MACHINES, VOID_HARVESTER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
@@ -682,6 +691,38 @@ public final class Machines {
             .addRecipe(new ItemStack(Material.RED_CONCRETE, 8), new ItemStack(Material.RED_CONCRETE_POWDER, 8))
             .addRecipe(new ItemStack(Material.BLACK_CONCRETE, 8), new ItemStack(Material.BLACK_CONCRETE_POWDER, 8))
             .ticksPerOutput(1).energyPerTick(80).register(plugin);
+
+        EnumMap<Material, ItemStack[]> falling_blocks = new EnumMap<>(Material.class);
+
+        falling_blocks.put(Material.SAND, new ItemStack[]{new ItemStack(Material.SAND, 8)});
+        falling_blocks.put(Material.RED_SAND, new ItemStack[]{new ItemStack(Material.RED_SAND, 8)});
+        falling_blocks.put(Material.GRAVEL, new ItemStack[]{new ItemStack(Material.GRAVEL, 8)});
+        falling_blocks.put(Material.ANVIL, new ItemStack[]{new ItemStack(Material.ANVIL, 8)});
+        falling_blocks.put(Material.DRAGON_EGG, new ItemStack[]{new ItemStack(Material.DIAMOND, 8)});
+        falling_blocks.put(Material.WHITE_CONCRETE_POWDER, new ItemStack[]{new ItemStack(Material.WHITE_CONCRETE_POWDER, 8)});
+        falling_blocks.put(Material.ORANGE_CONCRETE_POWDER, new ItemStack[]{new ItemStack(Material.ORANGE_CONCRETE_POWDER, 8)});
+        falling_blocks.put(Material.MAGENTA_CONCRETE_POWDER, new ItemStack[]{new ItemStack(Material.MAGENTA_CONCRETE_POWDER, 8)});
+        falling_blocks.put(Material.LIGHT_BLUE_CONCRETE_POWDER, new ItemStack[]{new ItemStack(Material.LIGHT_BLUE_CONCRETE_POWDER, 8)});
+        falling_blocks.put(Material.YELLOW_CONCRETE_POWDER, new ItemStack[]{new ItemStack(Material.YELLOW_CONCRETE_POWDER, 8)});
+        falling_blocks.put(Material.LIME_CONCRETE_POWDER, new ItemStack[]{new ItemStack(Material.LIME_CONCRETE_POWDER, 8)});
+        falling_blocks.put(Material.PINK_CONCRETE_POWDER, new ItemStack[]{new ItemStack(Material.PINK_CONCRETE_POWDER, 8)});
+        falling_blocks.put(Material.GRAY_CONCRETE_POWDER, new ItemStack[]{new ItemStack(Material.GRAY_CONCRETE_POWDER, 8)});
+        falling_blocks.put(Material.LIGHT_GRAY_CONCRETE_POWDER, new ItemStack[]{new ItemStack(Material.LIGHT_GRAY_CONCRETE_POWDER, 8)});
+        falling_blocks.put(Material.CYAN_CONCRETE_POWDER, new ItemStack[]{new ItemStack(Material.CYAN_CONCRETE_POWDER, 8)});
+        falling_blocks.put(Material.PURPLE_CONCRETE_POWDER, new ItemStack[]{new ItemStack(Material.PURPLE_CONCRETE_POWDER, 8)});
+        falling_blocks.put(Material.BLUE_CONCRETE_POWDER, new ItemStack[]{new ItemStack(Material.BLUE_CONCRETE_POWDER, 8)});
+        falling_blocks.put(Material.BROWN_CONCRETE_POWDER, new ItemStack[]{new ItemStack(Material.BROWN_CONCRETE_POWDER, 8)});
+        falling_blocks.put(Material.GREEN_CONCRETE_POWDER, new ItemStack[]{new ItemStack(Material.GREEN_CONCRETE_POWDER, 8)});
+        falling_blocks.put(Material.RED_CONCRETE_POWDER, new ItemStack[]{new ItemStack(Material.RED_CONCRETE_POWDER, 8)});
+        falling_blocks.put(Material.BLACK_CONCRETE_POWDER, new ItemStack[]{new ItemStack(Material.BLACK_CONCRETE_POWDER, 8)});
+        falling_blocks.put(Material.SCAFFOLDING, new ItemStack[]{new ItemStack(Material.SCAFFOLDING, 8)});
+        falling_blocks.put(Material.POINTED_DRIPSTONE, new ItemStack[]{new ItemStack(Material.POINTED_DRIPSTONE, 8)});
+
+        new MaterialReplicator(Groups.ADVANCED_MACHINES, GRAVITY_REPLICATOR, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
+            Materials.VOID_INGOT, Materials.VOID_DUST, Materials.VOID_INGOT,
+            Materials.VOID_INGOT, SlimefunItems.FLUID_PUMP, Materials.VOID_INGOT,
+            SlimefunItems.AUTO_DRIER, SlimefunItems.BIG_CAPACITOR, SlimefunItems.AUTO_DRIER
+        }).recipes(falling_blocks).ticksPerOutput(1).energyPerTick(180).register(plugin);
     }
 
     private static final class RandomizedItemStack extends ItemStack {
