@@ -31,6 +31,7 @@ public final class MaterialReplicator extends AbstractMachineBlock {
     private static final int STATUS_SLOT = 10;
     private static final ItemStack REPLICATING = new CustomItemStack(Material.LIME_STAINED_GLASS_PANE, "&a复制中...");
     private static final ItemStack INPUT_FALLING_BLOCK = new CustomItemStack(Material.BLUE_STAINED_GLASS_PANE, "&9放入一个重力方块!");
+    private static boolean OUTPUT_IS_FULL = false;
 
     @Setter
     private EnumMap<Material, ItemStack[]> recipes;
@@ -51,20 +52,17 @@ public final class MaterialReplicator extends AbstractMachineBlock {
             if (InfinityExpansion.slimefunTickCount() % this.ticksPerOutput == 0) {
                 ItemStack[] output = this.recipes.get(input.getType());
                 if (output != null) {
-                    boolean hasAnyOutput = false;
                     for (ItemStack item : output) {
                         ItemStack itemCopy = menu.pushItem(item.clone(), OUTPUT_SLOTS);
-                        if (itemCopy == null || item.getAmount() > itemCopy.getAmount()) {
-                            hasAnyOutput = true;
-                        }
-                    }
-                    if (!hasAnyOutput) {
-                        if (menu.hasViewer()) {
-                            menu.replaceExistingItem(STATUS_SLOT, NO_ROOM_ITEM);
-                        }
-                        return false;
+                        OUTPUT_IS_FULL = itemCopy != null && item.getAmount() == itemCopy.getAmount();
                     }
                 }
+            }
+            if (OUTPUT_IS_FULL) {
+                if (menu.hasViewer()) {
+                    menu.replaceExistingItem(STATUS_SLOT, NO_ROOM_ITEM);
+                }
+                return false;
             }
             return true;
         }

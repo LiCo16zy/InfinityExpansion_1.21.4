@@ -719,9 +719,9 @@ public final class Machines {
         falling_blocks.put(Material.POINTED_DRIPSTONE, new ItemStack[]{new ItemStack(Material.POINTED_DRIPSTONE, 8)});
 
         new MaterialReplicator(Groups.ADVANCED_MACHINES, GRAVITY_REPLICATOR, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
-            Materials.VOID_INGOT, Materials.VOID_DUST, Materials.VOID_INGOT,
-            Materials.VOID_INGOT, SlimefunItems.FLUID_PUMP, Materials.VOID_INGOT,
-            SlimefunItems.AUTO_DRIER, SlimefunItems.BIG_CAPACITOR, SlimefunItems.AUTO_DRIER
+            Materials.VOID_INGOT, SlimefunItems.BLOCK_PLACER, Materials.VOID_INGOT,
+            Materials.MACHINE_CIRCUIT, SlimefunItems.GPS_TELEPORTATION_MATRIX, Materials.MACHINE_CIRCUIT,
+            Materials.VOID_INGOT, Materials.MAGSTEEL_PLATE, Materials.VOID_INGOT,
         }).recipes(falling_blocks).ticksPerOutput(1).energyPerTick(180).register(plugin);
     }
 
