@@ -24,7 +24,7 @@ public final class Groups {
     public static final ItemGroup ADVANCED_MACHINES = new SubGroup("advanced_machines",
             new CustomItemStack(Material.BLAST_FURNACE, "&c无尽&7高级机器"));
     public static final ItemGroup INFINITY_GENERATOR = new SubGroup("infinity_generator",
-            new CustomItemStack(Material.LIGHT_GRAY_GLAZED_TERRACOTTA, "&c无尽&7发电机"));
+            new CustomItemStack(Material.LIGHT_GRAY_GLAZED_TERRACOTTA, "&e无尽&7发电机"));
     public static final ItemGroup STORAGE = new SubGroup("storage",
             new CustomItemStack(Material.BEEHIVE, "&6无尽&7存储"));
     public static final ItemGroup MOB_SIMULATION = new SubGroup("mob_simulation",

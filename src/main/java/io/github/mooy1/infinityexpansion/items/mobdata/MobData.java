@@ -3,7 +3,6 @@ package io.github.mooy1.infinityexpansion.items.mobdata;
 import lombok.experimental.UtilityClass;
 
 import org.bukkit.Material;
-import org.bukkit.entity.Slime;
 import org.bukkit.inventory.ItemStack;
 
 import io.github.mooy1.infinityexpansion.InfinityExpansion;
@@ -15,8 +14,6 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
-
-import org.bukkit.inventory.meta.ItemMeta;
 
 @UtilityClass
 public final class MobData {
@@ -65,7 +62,7 @@ public final class MobData {
     public static final SlimefunItemStack SKELETON = MobDataCard.create("Skeleton", MobDataTier.HOSTILE);
     public static final SlimefunItemStack CREEPER = MobDataCard.create("Creeper", MobDataTier.HOSTILE);
     public static final SlimefunItemStack GUARDIAN = MobDataCard.create("Guardian", MobDataTier.HOSTILE);
-    public static final SlimefunItemStack DROWN = MobDataCard.create("Drown", MobDataTier.HOSTILE);
+    public static final SlimefunItemStack DROWNED = MobDataCard.create("Drowned", MobDataTier.HOSTILE);
 
     public static final SlimefunItemStack WITHER_SKELETON = MobDataCard.create("Wither Skeleton", MobDataTier.ADVANCED);
     public static final SlimefunItemStack ENDERMAN = MobDataCard.create("Enderman", MobDataTier.ADVANCED);
@@ -164,7 +161,7 @@ public final class MobData {
             new ItemStack(Material.PRISMARINE_CRYSTALS, 64), new ItemStack(Material.PRISMARINE_SHARD, 64), new ItemStack(Material.COOKED_COD, 16)
         }).addDrop(Material.PRISMARINE_SHARD, 1).addDrop(Material.PRISMARINE_CRYSTALS, 2)
             .addDrop(Material.COD, 3).addDrop(Material.SPONGE, 40).register(plugin);
-        new MobDataCard(DROWN, MobDataTier.HOSTILE, new ItemStack[] {
+        new MobDataCard(DROWNED, MobDataTier.HOSTILE, new ItemStack[] {
             new ItemStack(Material.TRIDENT, 1), new ItemStack(Material.NAUTILUS_SHELL, 8), new ItemStack(Material.TRIDENT, 1),
             new ItemStack(Material.ROTTEN_FLESH, 64), EMPTY_DATA_CARD, new ItemStack(Material.ROTTEN_FLESH, 64),
             new ItemStack(Material.COPPER_INGOT, 32),  new ItemStack(Material.FISHING_ROD, 1), new ItemStack(Material.COPPER_INGOT, 32),
