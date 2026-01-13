@@ -211,11 +211,12 @@ public final class StoneworksFactory extends AbstractMachineBlock implements Rec
                 "&f石头 &8=> &f平滑石头",
                 "&f沙子 &8=> &f玻璃",
                 "&f石砖 &8=> &f裂纹石砖",
+                "&f深板岩圆石 &8=> &f深板岩",
                 "",
                 "&7 > 点击切换"
             ),
-            new Material[] { Material.COBBLESTONE, Material.STONE, Material.SAND, Material.STONE_BRICKS },
-            new Material[] { Material.STONE, Material.SMOOTH_STONE, Material.GLASS, Material.CRACKED_STONE_BRICKS }
+            new Material[] { Material.COBBLESTONE, Material.STONE, Material.SAND, Material.STONE_BRICKS,  Material.COBBLED_DEEPSLATE },
+            new Material[] { Material.STONE, Material.SMOOTH_STONE, Material.GLASS, Material.CRACKED_STONE_BRICKS, Material.DEEPSLATE }
         ),
         CRUSH(
             new CustomItemStack(
@@ -240,25 +241,42 @@ public final class StoneworksFactory extends AbstractMachineBlock implements Rec
                 "&f闪长岩 &8=> &f磨制闪长岩",
                 "&f安山岩 &8=> &f磨制安山岩",
                 "&f沙子 &8=> &f沙石",
+                "&f凝灰岩 &8=> &f磨制凝灰岩",
+                "&f深板岩圆石 &8=> &f磨制深板岩",
                 "",
                 "&7 > 点击切换"
             ),
-            new Material[] { Material.STONE, Material.GRANITE, Material.DIORITE, Material.ANDESITE, Material.SAND },
-            new Material[] { Material.STONE_BRICKS, Material.POLISHED_GRANITE, Material.POLISHED_DIORITE, Material.POLISHED_ANDESITE, Material.SANDSTONE }
+            new Material[] { Material.STONE, Material.GRANITE, Material.DIORITE, Material.ANDESITE, Material.SAND, Material.TUFF, Material.COBBLED_DEEPSLATE },
+            new Material[] { Material.STONE_BRICKS, Material.POLISHED_GRANITE, Material.POLISHED_DIORITE, Material.POLISHED_ANDESITE, Material.SANDSTONE, Material.POLISHED_TUFF, Material.POLISHED_DEEPSLATE }
         ),
-        TRANSFORM(
+        SILICIFICATION(
             new CustomItemStack(
-                Material.ANDESITE,
-                "&8转化",
+                Material.QUARTZ,
+                "&8硅化",
+                "",
+                "&f圆石 &8=> &f闪长岩",
+                "&f闪长岩 &8=> &f花岗岩",
+                "&f石头 &8=> &f方解石",
+                "",
+                "&7 > 点击切换"
+            ),
+            new Material[] { Material.COBBLESTONE, Material.DIORITE, Material.STONE },
+            new Material[] { Material.DIORITE, Material.GRANITE, Material.CALCITE }
+        ),
+        PETROGENESIS(
+            new CustomItemStack(
+                Material.TUFF,
+                "&8成岩",
+                "",
                 "",
                 "&f圆石 &8=> &f安山岩",
-                "&f安山岩 &8=> &f闪长岩",
-                "&f闪长岩 &8=> &f花岗岩",
+                "&f安山岩 &8=> &f凝灰岩",
+                "&f石头 &8=> &f深板岩圆石",
                 "",
                 "&7 > 点击切换"
             ),
-            new Material[] { Material.COBBLESTONE, Material.ANDESITE, Material.DIORITE},
-            new Material[] { Material.ANDESITE, Material.DIORITE, Material.GRANITE}
+            new Material[] { Material.COBBLESTONE, Material.ANDESITE, Material.STONE },
+            new Material[] { Material.ANDESITE, Material.TUFF, Material.COBBLED_DEEPSLATE }
         );
 
         private final ItemStack item;
