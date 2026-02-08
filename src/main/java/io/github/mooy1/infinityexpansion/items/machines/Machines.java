@@ -422,8 +422,8 @@ public final class Machines {
                 Materials.MACHINE_PLATE, SlimefunItems.CROP_GROWTH_ACCELERATOR_2, ADVANCED_GROWER, ADVANCED_GROWER, SlimefunItems.CROP_GROWTH_ACCELERATOR_2, Materials.MACHINE_PLATE,
                 Materials.MACHINE_PLATE, Materials.INFINITE_CIRCUIT, Materials.INFINITE_CORE, Materials.INFINITE_CORE, Materials.INFINITE_CIRCUIT, Materials.MACHINE_PLATE
         }).recipes(crops).ticksPerOutput(12).energyPerTick(900).register(plugin);
-        EnumMap<Material, ItemStack[]> flowers = new EnumMap<>(Material.class);
 
+        EnumMap<Material, ItemStack[]> flowers = new EnumMap<>(Material.class);
         flowers.put(Material.DANDELION, new ItemStack[] { new ItemStack(Material.DANDELION, 4) });
         flowers.put(Material.POPPY, new ItemStack[] { new ItemStack(Material.POPPY, 4) });
         flowers.put(Material.BLUE_ORCHID, new ItemStack[] { new ItemStack(Material.BLUE_ORCHID, 4) });
@@ -436,7 +436,7 @@ public final class Machines {
         flowers.put(Material.OXEYE_DAISY, new ItemStack[] { new ItemStack(Material.OXEYE_DAISY, 4) });
         flowers.put(Material.CORNFLOWER, new ItemStack[] { new ItemStack(Material.CORNFLOWER, 4) });
         flowers.put(Material.LILY_OF_THE_VALLEY, new ItemStack[] { new ItemStack(Material.LILY_OF_THE_VALLEY, 4) });
-        flowers.put(Material.WITHER_ROSE, new ItemStack[] { new ItemStack(Material.WITHER_ROSE, 2) });
+        flowers.put(Material.WITHER_ROSE, new ItemStack[] { new ItemStack(Material.WITHER_ROSE, 1) });
         flowers.put(Material.SUNFLOWER, new ItemStack[] { new ItemStack(Material.SUNFLOWER, 2) });
         flowers.put(Material.LILAC, new ItemStack[] { new ItemStack(Material.LILAC, 2) });
         flowers.put(Material.ROSE_BUSH, new ItemStack[] { new ItemStack(Material.ROSE_BUSH, 2) });
@@ -445,7 +445,17 @@ public final class Machines {
         flowers.put(Material.PITCHER_PLANT, new ItemStack[] { new ItemStack(Material.PITCHER_PLANT, 2) });
         flowers.put(Material.CLOSED_EYEBLOSSOM, new ItemStack[] { new ItemStack(Material.CLOSED_EYEBLOSSOM, 4) });
         flowers.put(Material.OPEN_EYEBLOSSOM, new ItemStack[] { new ItemStack(Material.OPEN_EYEBLOSSOM, 4) });
-        flowers.put(Material.SPORE_BLOSSOM, new ItemStack[] { new ItemStack(Material.SPORE_BLOSSOM, 2) });
+        flowers.put(Material.SPORE_BLOSSOM, new ItemStack[] { new ItemStack(Material.SPORE_BLOSSOM, 1) });
+        flowers.put(Material.SHORT_GRASS, new ItemStack[] { new ItemStack(Material.SHORT_GRASS, 4) });
+        flowers.put(Material.FERN, new ItemStack[] { new ItemStack(Material.FERN, 4) });
+        flowers.put(Material.TALL_GRASS, new ItemStack[] { new ItemStack(Material.TALL_GRASS, 2) });
+        flowers.put(Material.LARGE_FERN, new ItemStack[] { new ItemStack(Material.LARGE_FERN, 2) });
+        flowers.put(Material.VINE, new ItemStack[] { new ItemStack(Material.VINE, 4) });
+        flowers.put(Material.TWISTING_VINES, new ItemStack[] { new ItemStack(Material.TWISTING_VINES, 4) });
+        flowers.put(Material.WEEPING_VINES, new ItemStack[] { new ItemStack(Material.WEEPING_VINES, 4) });
+        flowers.put(Material.LILY_PAD, new ItemStack[] { new ItemStack(Material.LILY_PAD, 1) });
+        flowers.put(Material.GLOW_LICHEN, new ItemStack[] { new ItemStack(Material.GLOW_LICHEN, 4) });
+        flowers.put(Material.CHORUS_FLOWER, new ItemStack[] { new ItemStack(Material.CHORUS_FLOWER, 1) });
 
         new GrowingMachine(Groups.BASIC_MACHINES, BASIC_FLOWER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
             new ItemStack(Material.GLASS), new ItemStack(Material.GLASS), new ItemStack(Material.GLASS),
