@@ -37,6 +37,15 @@ quarry-options:
     emerald: .5
     gold: .5
 
+  # 每次生成矿物时, 奇点生产加速器激活的概率 (范围: 0~1)
+  singularity-oscillators:
+    lapis: 1.
+    diamond: 1.
+    redstone: 1.
+    quartz: 1.
+    emerald: 1.
+    gold: 1.
+
   # 每隔多少粘液刻输出产物
     #  # 在没有更改 Slimefun 设置的情况下，1 粘液刻 = 0.5 秒
   ticks-per-output: 10

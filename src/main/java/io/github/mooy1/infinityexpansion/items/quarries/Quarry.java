@@ -121,7 +121,7 @@ public final class Quarry extends AbstractMachineBlock implements RecipeDisplayI
                 }
             }
             else {
-                outputItem = new ItemStack(oscillator.getItem().getType(), this.speed);
+                outputItem = new ItemStack(oscillator.output.getType(), this.speed);
             }
         }
         else {
