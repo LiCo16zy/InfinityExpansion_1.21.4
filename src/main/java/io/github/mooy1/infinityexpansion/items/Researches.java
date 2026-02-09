@@ -60,7 +60,10 @@ public final class Researches {
         );
         create(6, "oscillators", "改进矿机", 30,
                 Quarries.DIAMOND_OSCILLATOR, Quarries.EMERALD_OSCILLATOR, Quarries.LAPIS_OSCILLATOR,
-                Quarries.REDSTONE_OSCILLATOR, Quarries.QUARTZ_OSCILLATOR
+                Quarries.REDSTONE_OSCILLATOR, Quarries.QUARTZ_OSCILLATOR, Quarries.GOLD_OSCILLATOR,
+                Quarries.DIAMOND_SINGULARITY_OSCILLATOR, Quarries.EMERALD_SINGULARITY_OSCILLATOR,
+                Quarries.LAPIS_SINGULARITY_OSCILLATOR, Quarries.REDSTONE_SINGULARITY_OSCILLATOR,
+                Quarries.QUARTZ_SINGULARITY_OSCILLATOR, Quarries.GOLD_SINGULARITY_OSCILLATOR
         );
         create(7, "machine_materials", "机器材料", 20,
                 Materials.MAGSTEEL, Materials.MAGSTEEL_PLATE, Materials.MACHINE_CIRCUIT,
@@ -90,7 +93,8 @@ public final class Researches {
                 Machines.DUST_EXTRACTOR, Machines.EXTREME_FREEZER, Machines.GEO_QUARRY,
                 Machines.DECOMPRESSOR, Machines.STONEWORKS_FACTORY, Machines.BASIC_OBSIDIAN,
                 Machines.INGOT_FORMER, Blocks.ADVANCED_ANVIL, Machines.URANIUM_EXTRACTOR,
-                Machines.GEAR_TRANSFORMER, Machines.ADVANCED_FLOWER
+                Machines.GEAR_TRANSFORMER, Machines.ADVANCED_FLOWER, Machines.CONCRETE_MOLDING_MACHINE,
+                Machines.GRAVITY_REPLICATOR
         );
         create(14, "upgraded_machines", "升级机器", 40,
                 SlimefunExtension.ADVANCED_CHARGER, SlimefunExtension.ADVANCED_ENCHANTER,
@@ -127,7 +131,8 @@ public final class Researches {
                 MobData.CREEPER, MobData.GUARDIAN, MobData.WITCH
         );
         create(22, "advanced_mob_data", "进阶生物芯片", 45,
-                MobData.WITHER_SKELETON, MobData.ENDERMAN, MobData.IRON_GOLEM, MobData.BLAZE
+                MobData.WITHER_SKELETON, MobData.ENDERMAN, MobData.IRON_GOLEM,
+                MobData.BLAZE, MobData.DROWNED
         );
         create(23, "boss_mob_data", "首领生物芯片", 60,
                 MobData.WITHER, MobData.ENDER_DRAGON

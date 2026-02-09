@@ -24,6 +24,7 @@ public final class Oscillator extends SlimefunItem {
     private static final Map<String, Oscillator> OSCILLATORS = new HashMap<>();
 
     public final double chance;
+    public final ItemStack output;
 
     @Nullable
     public static Oscillator getOscillator(@Nullable ItemStack item) {
@@ -38,9 +39,20 @@ public final class Oscillator extends SlimefunItem {
         return new SlimefunItemStack(
                 "QUARRY_OSCILLATOR_" + material.name(),
                 material,
-                "&b" + MaterialHelper.getName(material) + " 生产加速器",
+                "&6" + MaterialHelper.getName(material) + " 生产加速器",
                 "&7放置在矿机中",
                 "&7提高 " + (chance * 100) + "% 挖到此矿的几率"
+        );
+    }
+
+    @Nonnull
+    public static SlimefunItemStack create(Material material, Material material_block) {
+        return new SlimefunItemStack(
+            "QUARRY_SINGULARITY_OSCILLATOR_" + material.name(),
+            material_block,
+            "&b" + MaterialHelper.getName(material) + " 奇点加速器",
+            "",
+            "&7奇点的力量融入了矿机..."
         );
     }
 
@@ -52,6 +64,23 @@ public final class Oscillator extends SlimefunItem {
         });
         OSCILLATORS.put(getId(), this);
         this.chance = chance;
+        this.output = new ItemStack(item.getType());
+    }
+
+    public Oscillator(SlimefunItemStack item, double chance, SlimefunItemStack oscillator, ItemStack singularity) {
+        super(
+            Groups.MAIN_MATERIALS,
+            item,
+            RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[] {
+                Materials.VOID_INGOT, oscillator, Materials.VOID_INGOT,
+                oscillator, singularity, oscillator,
+                Materials.VOID_INGOT, oscillator, Materials.VOID_INGOT
+            }
+        );
+        OSCILLATORS.put(getId(), this);
+        this.chance = chance;
+        this.output = new ItemStack(oscillator.getType());
     }
 
 }
