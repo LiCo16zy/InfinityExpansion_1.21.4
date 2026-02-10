@@ -6,6 +6,24 @@ balance-options:
   # 设置奇点消耗材料的倍数
   singularity-cost-multiplier: 1.0
 
+  # 允许使用粘液科技的金锭构造奇点
+  singularity-enable-sf-gold: true
+
+  # 奇点构造机中各种金锭相对于原版金锭的倍率
+  # 金锭-24K 相当于 6 个原版金锭
+  gold-singularity-process:
+    gold-4k: 1
+    gold-6k: 1
+    gold-8k: 2
+    gold-10k: 2
+    gold-12k: 3
+    gold-14k: 3
+    gold-16k: 4
+    gold-18k: 4
+    gold-20k: 5
+    gold-22k: 5
+    gold-24k: 6
+
   # 允许装备材质转换器更改 Slimefun 中装备的材质。
   # 钻石装备可升级为下界合金，但部分附属插件的物品可能在升级后无法使用
   # 请谨慎开启该选项！！

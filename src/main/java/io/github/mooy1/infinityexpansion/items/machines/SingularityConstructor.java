@@ -54,6 +54,21 @@ public final class SingularityConstructor extends AbstractMachineBlock implement
         RECIPE_LIST.add(recipe);
         RECIPE_MAP.put(id, new Pair<>(RECIPE_LIST.size() - 1, recipe));
     });
+    private static final Map<String, Integer> GOLD_MAP = new HashMap<>();
+    static {
+        GOLD_MAP.put("GOLD_INGOT", 1);
+        GOLD_MAP.put("GOLD_4K", InfinityExpansion.config().getInt("balance-options.gold-singularity-process.gold-4k", 1));
+        GOLD_MAP.put("GOLD_6K", InfinityExpansion.config().getInt("balance-options.gold-singularity-process.gold-6k", 1));
+        GOLD_MAP.put("GOLD_8K", InfinityExpansion.config().getInt("balance-options.gold-singularity-process.gold-8k", 2));
+        GOLD_MAP.put("GOLD_10K", InfinityExpansion.config().getInt("balance-options.gold-singularity-process.gold-10k", 2));
+        GOLD_MAP.put("GOLD_12K", InfinityExpansion.config().getInt("balance-options.gold-singularity-process.gold-12k", 3));
+        GOLD_MAP.put("GOLD_14K", InfinityExpansion.config().getInt("balance-options.gold-singularity-process.gold-14k", 3));
+        GOLD_MAP.put("GOLD_16K", InfinityExpansion.config().getInt("balance-options.gold-singularity-process.gold-16k", 4));
+        GOLD_MAP.put("GOLD_18K", InfinityExpansion.config().getInt("balance-options.gold-singularity-process.gold-18k", 4));
+        GOLD_MAP.put("GOLD_20K", InfinityExpansion.config().getInt("balance-options.gold-singularity-process.gold-20k", 5));
+        GOLD_MAP.put("GOLD_22K", InfinityExpansion.config().getInt("balance-options.gold-singularity-process.gold-22k", 5));
+        GOLD_MAP.put("GOLD_24K", InfinityExpansion.config().getInt("balance-options.gold-singularity-process.gold-24k", 6));
+    }
 
     private static final String PROGRESS = "progress";
     private static final int STATUS_SLOT = 13;
@@ -62,6 +77,9 @@ public final class SingularityConstructor extends AbstractMachineBlock implement
 
     @Setter
     private int speed;
+
+    private static final Boolean ENABLE_SF_GOLD =
+        InfinityExpansion.config().getBoolean("balance-options.singularity-enable-sf-gold");
 
     public SingularityConstructor(ItemGroup category, SlimefunItemStack item, RecipeType type, ItemStack[] recipe) {
         super(category, item, type, recipe);
@@ -106,11 +124,18 @@ public final class SingularityConstructor extends AbstractMachineBlock implement
     protected boolean process(@Nonnull Block b, @Nonnull BlockMenu menu) {
         ItemStack input = menu.getItemInSlot(INPUT_SLOT[0]);
         String inputID;
+        int multiplier = 1;
         if (input == null) {
             inputID = null;
         }
         else {
             inputID = StackUtils.getIdOrType(input);
+            if (ENABLE_SF_GOLD && inputID.contains("GOLD")) {
+                multiplier = GOLD_MAP.getOrDefault(inputID, 0);
+                if (multiplier > 0) {
+                    inputID = "GOLD_INGOT";
+                }
+            }
         }
 
         // load data
@@ -125,8 +150,9 @@ public final class SingularityConstructor extends AbstractMachineBlock implement
             if (inputID != null) {
                 Pair<Integer, Recipe> pair = RECIPE_MAP.get(inputID);
                 if (pair != null) {
-                    progress = Math.min(this.speed, input.getAmount());
-                    input.setAmount(input.getAmount() - progress);
+                    int adder = Math.min(this.speed, input.getAmount());
+                    input.setAmount(input.getAmount() - adder);
+                    progress += adder * multiplier;
                     progressID = pair.getFirstValue();
                     triplet = pair.getSecondValue();
                     takeCharge = true;
@@ -144,16 +170,16 @@ public final class SingularityConstructor extends AbstractMachineBlock implement
         else {
             // started
             triplet = RECIPE_LIST.get(progressID);
-            if (inputID != null) {
-                int max = Math.min(triplet.amount - progress, Math.min(this.speed, input.getAmount()));
-                if (max > 0) {
-                    if (triplet.id.equals(inputID)) {
-                        progress += max;
-                        input.setAmount(input.getAmount() - max);
-                        takeCharge = true;
-                    } // invalid input
+            if (triplet.id.equals(inputID)) {
+                int remainder = triplet.amount - progress;
+                int ceil = remainder != 0 ? (remainder + multiplier - 1) / multiplier : 0;
+                int adder = Math.min(ceil, Math.min(this.speed, input.getAmount()));
+                if (adder > 0) {
+                    progress += adder * multiplier;
+                    input.setAmount(input.getAmount() - adder);
+                    takeCharge = true;
                 } // already done
-            }
+            }// invalid input
         }
 
         // show status and output if done
