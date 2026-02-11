@@ -68,12 +68,14 @@ public final class Quarries {
     public static final double EMERALD_CHANCE = getOscillatorChance("emerald");
     public static final double QUARTZ_CHANCE = getOscillatorChance("quartz");
     public static final double GOLD_CHANCE = getOscillatorChance("gold");
+    public static final double COAL_CHANCE = getOscillatorChance("coal");
     public static final SlimefunItemStack DIAMOND_OSCILLATOR = Oscillator.create(Material.DIAMOND, DIAMOND_CHANCE);
     public static final SlimefunItemStack REDSTONE_OSCILLATOR = Oscillator.create(Material.REDSTONE, REDSTONE_CHANCE);
     public static final SlimefunItemStack LAPIS_OSCILLATOR = Oscillator.create(Material.LAPIS_LAZULI, LAPIS_CHANCE);
     public static final SlimefunItemStack QUARTZ_OSCILLATOR = Oscillator.create(Material.QUARTZ, QUARTZ_CHANCE);
     public static final SlimefunItemStack EMERALD_OSCILLATOR = Oscillator.create(Material.EMERALD, EMERALD_CHANCE);
     public static final SlimefunItemStack GOLD_OSCILLATOR = Oscillator.create(Material.GOLD_INGOT, GOLD_CHANCE);
+    public static final SlimefunItemStack COAL_OSCILLATOR = Oscillator.create(Material.COAL, COAL_CHANCE);
 
     private static double getOscillatorChance(String type) {
         return InfinityExpansion.config().getDouble("quarry-options.oscillators." + type, 0, 1);
@@ -85,12 +87,14 @@ public final class Quarries {
     public static final double EMERALD_SINGULARITY_CHANCE = getSingularityOscillatorChance("emerald");
     public static final double QUARTZ_SINGULARITY_CHANCE = getSingularityOscillatorChance("quartz");
     public static final double GOLD_SINGULARITY_CHANCE = getSingularityOscillatorChance("gold");
+    public static final double COAL_SINGULARITY_CHANCE = getSingularityOscillatorChance("coal");
     public static final SlimefunItemStack DIAMOND_SINGULARITY_OSCILLATOR = Oscillator.create(Material.DIAMOND, Material.DIAMOND_BLOCK);
     public static final SlimefunItemStack REDSTONE_SINGULARITY_OSCILLATOR = Oscillator.create(Material.REDSTONE, Material.REDSTONE_BLOCK);
     public static final SlimefunItemStack LAPIS_SINGULARITY_OSCILLATOR = Oscillator.create(Material.LAPIS_LAZULI, Material.LAPIS_BLOCK);
     public static final SlimefunItemStack QUARTZ_SINGULARITY_OSCILLATOR = Oscillator.create(Material.QUARTZ, Material.QUARTZ_BLOCK);
     public static final SlimefunItemStack EMERALD_SINGULARITY_OSCILLATOR = Oscillator.create(Material.EMERALD, Material.EMERALD_BLOCK);
     public static final SlimefunItemStack GOLD_SINGULARITY_OSCILLATOR = Oscillator.create(Material.GOLD_INGOT, Material.GOLD_BLOCK);
+    public static final SlimefunItemStack COAL_SINGULARITY_OSCILLATOR = Oscillator.create(Material.COAL, Material.COAL_BLOCK);
 
     private static double getSingularityOscillatorChance(String type) {
         return InfinityExpansion.config().getDouble("quarry-options.singularity-oscillators." + type, 0, 1);
@@ -104,6 +108,8 @@ public final class Quarries {
         boolean coal = section.getBoolean("coal");
 
         if (coal) {
+            new Oscillator(COAL_OSCILLATOR, COAL_CHANCE).register(plugin);
+            new Oscillator(COAL_OSCILLATOR, COAL_SINGULARITY_CHANCE, COAL_OSCILLATOR, Materials.COAL_SINGULARITY).register(plugin);
             outputs.add(Material.COAL);
             outputs.add(Material.COAL);
         }

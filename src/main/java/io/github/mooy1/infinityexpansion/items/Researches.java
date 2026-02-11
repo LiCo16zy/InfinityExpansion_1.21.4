@@ -63,7 +63,8 @@ public final class Researches {
                 Quarries.REDSTONE_OSCILLATOR, Quarries.QUARTZ_OSCILLATOR, Quarries.GOLD_OSCILLATOR,
                 Quarries.DIAMOND_SINGULARITY_OSCILLATOR, Quarries.EMERALD_SINGULARITY_OSCILLATOR,
                 Quarries.LAPIS_SINGULARITY_OSCILLATOR, Quarries.REDSTONE_SINGULARITY_OSCILLATOR,
-                Quarries.QUARTZ_SINGULARITY_OSCILLATOR, Quarries.GOLD_SINGULARITY_OSCILLATOR
+                Quarries.QUARTZ_SINGULARITY_OSCILLATOR, Quarries.GOLD_SINGULARITY_OSCILLATOR,
+                Quarries.COAL_OSCILLATOR, Quarries.COAL_SINGULARITY_OSCILLATOR
         );
         create(7, "machine_materials", "机器材料", 20,
                 Materials.MAGSTEEL, Materials.MAGSTEEL_PLATE, Materials.MACHINE_CIRCUIT,
