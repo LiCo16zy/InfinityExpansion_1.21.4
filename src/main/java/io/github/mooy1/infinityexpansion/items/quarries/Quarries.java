@@ -109,7 +109,7 @@ public final class Quarries {
 
         if (coal) {
             new Oscillator(COAL_OSCILLATOR, COAL_CHANCE).register(plugin);
-            new Oscillator(COAL_OSCILLATOR, COAL_SINGULARITY_CHANCE, COAL_OSCILLATOR, Materials.COAL_SINGULARITY).register(plugin);
+            new Oscillator(COAL_SINGULARITY_OSCILLATOR, COAL_SINGULARITY_CHANCE, COAL_OSCILLATOR, Materials.COAL_SINGULARITY).register(plugin);
             outputs.add(Material.COAL);
             outputs.add(Material.COAL);
         }
