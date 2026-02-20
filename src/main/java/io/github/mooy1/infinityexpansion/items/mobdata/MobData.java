@@ -20,13 +20,14 @@ public final class MobData {
 
     private static final int CHAMBER_INTERVAL =
             InfinityExpansion.config().getInt("mob-simulation-options.ticks-per-output", 1, 1000);
-    private static final int CHAMBER_BUFFER = 15000;
+    private static final int CHAMBER_BUFFER =
+        InfinityExpansion.config().getInt("mob-simulation-options.chamber-capacitor", 20000);
     private static final int CHAMBER_ENERGY = 150;
     private static final int INFUSER_ENERGY = 20000;
 
     public static final SlimefunItemStack EMPTY_DATA_CARD = new SlimefunItemStack(
             "EMPTY_DATA_CARD",
-            Material.CHAINMAIL_CHESTPLATE,
+            Material.BLUE_CANDLE,
             "&8空生物芯片",
             "&7需要注入生物掉落物"
     );
@@ -79,7 +80,7 @@ public final class MobData {
                 Materials.MAGSTEEL_PLATE, Materials.MACHINE_PLATE, Materials.MAGSTEEL_PLATE,
                 Materials.MACHINE_CIRCUIT, SlimefunItems.PROGRAMMABLE_ANDROID_BUTCHER, Materials.MACHINE_CIRCUIT,
                 Materials.MAGSTEEL_PLATE, Materials.MACHINE_PLATE, Materials.MAGSTEEL_PLATE,
-        }, CHAMBER_ENERGY, CHAMBER_INTERVAL).register(plugin);
+        }, CHAMBER_ENERGY, CHAMBER_BUFFER, CHAMBER_INTERVAL).register(plugin);
 
         new MobDataInfuser(Groups.MOB_SIMULATION, INFUSER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
                 Materials.MACHINE_CIRCUIT, SlimefunItems.REINFORCED_ALLOY_INGOT, Materials.MACHINE_CIRCUIT,

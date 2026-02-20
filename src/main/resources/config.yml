@@ -43,6 +43,13 @@ mob-simulation-options:
   # 设置从生物模拟中获取经验的倍率
   xp-multiplier: 1.0
 
+  # 是否启用生物模拟芯片堆叠 (耗电同步增加)
+  # 堆叠数量取决于模拟空间的电容大小, 且至多 64 个
+  enable-chip-stacking: true
+
+  # 设置模拟空间电容大小 (默认: 20000J)
+  chamber-capacitor: 20000
+
 # 矿机相关设置
 quarry-options:
 
@@ -67,7 +74,7 @@ quarry-options:
     coal: 1.
 
   # 每隔多少粘液刻输出产物
-    #  # 在没有更改 Slimefun 设置的情况下，1 粘液刻 = 0.5 秒
+  # 在没有更改 Slimefun 设置的情况下，1 粘液刻 = 0.5 秒
   ticks-per-output: 10
 
   # 允许在非下界的矿机输出下界产物（石英，下界岩，下界合金）

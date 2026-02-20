@@ -31,8 +31,10 @@ import me.mrCookieSlime.Slimefun.api.inventory.DirtyChestMenu;
 public final class MobSimulationChamber extends TickingMenuBlock implements EnergyNetComponent {
 
     static final double XP_MULTIPLIER = InfinityExpansion.config().getDouble("mob-simulation-options.xp-multiplier", 0, 1000);
+    static final boolean CHIP_STACKING = InfinityExpansion.config().getBoolean("mob-simulation-options.enable-chip-stacking");
 
     private static final ItemStack NO_CARD = new CustomItemStack(Material.BARRIER, "&c请放入生物芯片!");
+    private static final ItemStack CHIP_OVERLOAD = new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&c芯片过载!", "&7请减少芯片数量");
     private static final int CARD_SLOT = 37;
     private static final int STATUS_SLOT = 10;
     private static final int[] OUTPUT_SLOTS = {
@@ -44,11 +46,13 @@ public final class MobSimulationChamber extends TickingMenuBlock implements Ener
     private static final int XP_SLOT = 46;
 
     private final int energy;
+    private final int buffer;
     private final int interval;
 
-    public MobSimulationChamber(ItemGroup category, SlimefunItemStack item, RecipeType type, ItemStack[] recipe, int energy, int interval) {
+    public MobSimulationChamber(ItemGroup category, SlimefunItemStack item, RecipeType type, ItemStack[] recipe, int energy, int buffer, int interval) {
         super(category, item, type, recipe);
         this.energy = energy;
+        this.buffer = buffer;
         this.interval = interval;
     }
 
@@ -67,7 +71,7 @@ public final class MobSimulationChamber extends TickingMenuBlock implements Ener
 
     @Override
     public int getCapacity() {
-        return this.energy + Math.max(MobDataTier.BOSS.energy, this.energy * 9);
+        return this.buffer;
     }
 
     @Override
@@ -150,7 +154,15 @@ public final class MobSimulationChamber extends TickingMenuBlock implements Ener
             return;
         }
 
-        int energy = card.tier.energy + this.energy;
+        if (CHIP_STACKING && input.getAmount() * card.tier.energy + this.energy > this.buffer) {
+            if (inv.hasViewer()) {
+                inv.replaceExistingItem(STATUS_SLOT, CHIP_OVERLOAD);
+            }
+            return;
+        }
+
+        int effectiveCount = CHIP_STACKING ? input.getAmount() : 1;
+        int energy = card.tier.energy * effectiveCount + this.energy;
 
         if (getCharge(b.getLocation()) < energy) {
             if (inv.hasViewer()) {
@@ -174,14 +186,16 @@ public final class MobSimulationChamber extends TickingMenuBlock implements Ener
             return;
         }
 
-        StorageCacheUtils.setData(b.getLocation(), "xp", String.valueOf(xp + card.tier.xp));
+        StorageCacheUtils.setData(b.getLocation(), "xp",
+                String.valueOf(xp + card.tier.xp * effectiveCount));
 
-        ItemStack item = card.drops.getRandom();
-        if (inv.fits(item, OUTPUT_SLOTS)) {
-            inv.pushItem(item.clone(), OUTPUT_SLOTS);
-        }
-        else if (inv.hasViewer()) {
-            inv.replaceExistingItem(STATUS_SLOT, NO_ROOM_ITEM);
+        for (int i = 0; i < effectiveCount; i++) {
+            ItemStack item = card.drops.getRandom();
+            if (inv.fits(item, OUTPUT_SLOTS)) {
+                inv.pushItem(item.clone(), OUTPUT_SLOTS);
+            } else if (inv.hasViewer()) {
+                inv.replaceExistingItem(STATUS_SLOT, NO_ROOM_ITEM);
+            }
         }
     }
 }
