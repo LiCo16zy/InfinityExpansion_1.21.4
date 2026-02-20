@@ -1,5 +1,8 @@
 package io.github.mooy1.infinityexpansion.items;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 import lombok.experimental.UtilityClass;
 
 import io.github.mooy1.infinityexpansion.InfinityExpansion;
@@ -141,7 +144,8 @@ public final class Researches {
     }
 
     private static void create(int id, String key, String name, int cost, SlimefunItemStack... items) {
-        new Research(InfinityExpansion.createKey(key), FIRST_RESEARCH_ID + id, name, cost).addItems(items).register();
+        SlimefunItemStack[] filtered = Arrays.stream(items).filter(Objects::nonNull).toArray(SlimefunItemStack[]::new);
+        new Research(InfinityExpansion.createKey(key), FIRST_RESEARCH_ID + id, name, cost).addItems(filtered).register();
     }
 
 }

@@ -63,6 +63,14 @@ public final class Quarries {
             MachineLore.energyPerSecond(36000)
     );
 
+    public static SlimefunItemStack COAL_OSCILLATOR, COAL_SINGULARITY_OSCILLATOR;
+    public static SlimefunItemStack GOLD_OSCILLATOR, GOLD_SINGULARITY_OSCILLATOR;
+    public static SlimefunItemStack REDSTONE_OSCILLATOR, REDSTONE_SINGULARITY_OSCILLATOR;
+    public static SlimefunItemStack LAPIS_OSCILLATOR, LAPIS_SINGULARITY_OSCILLATOR;
+    public static SlimefunItemStack EMERALD_OSCILLATOR, EMERALD_SINGULARITY_OSCILLATOR;
+    public static SlimefunItemStack DIAMOND_OSCILLATOR, DIAMOND_SINGULARITY_OSCILLATOR;
+    public static SlimefunItemStack QUARTZ_OSCILLATOR, QUARTZ_SINGULARITY_OSCILLATOR;
+
     public static void setup(InfinityExpansion plugin) {
         ConfigurationSection section = plugin.getConfig().getConfigurationSection("quarry-options.resources");
         Objects.requireNonNull(section);
@@ -71,7 +79,9 @@ public final class Quarries {
         boolean coal = section.getBoolean("coal");
 
         if (coal) {
-            registerOscillatorPair(plugin, "coal", Material.COAL, Material.COAL_BLOCK, Materials.COAL_SINGULARITY);
+            Oscillator[] p = registerOscillatorPair(plugin, "coal", Material.COAL, Material.COAL_BLOCK, Materials.COAL_SINGULARITY);
+            COAL_OSCILLATOR = (SlimefunItemStack) p[0].getItem();
+            COAL_SINGULARITY_OSCILLATOR = (SlimefunItemStack) p[1].getItem();
             outputs.add(Material.COAL);
             outputs.add(Material.COAL);
         }
@@ -81,7 +91,9 @@ public final class Quarries {
         }
 
         if (section.getBoolean("gold")) {
-            registerOscillatorPair(plugin, "gold", Material.GOLD_INGOT, Material.GOLD_BLOCK, Materials.GOLD_SINGULARITY);
+            Oscillator[] p = registerOscillatorPair(plugin, "gold", Material.GOLD_INGOT, Material.GOLD_BLOCK, Materials.GOLD_SINGULARITY);
+            GOLD_OSCILLATOR = (SlimefunItemStack) p[0].getItem();
+            GOLD_SINGULARITY_OSCILLATOR = (SlimefunItemStack) p[1].getItem();
             outputs.add(Material.GOLD_INGOT);
         }
 
@@ -91,22 +103,30 @@ public final class Quarries {
         }
 
         if (section.getBoolean("redstone")) {
-            registerOscillatorPair(plugin, "redstone", Material.REDSTONE, Material.REDSTONE_BLOCK, Materials.REDSTONE_SINGULARITY);
+            Oscillator[] p = registerOscillatorPair(plugin, "redstone", Material.REDSTONE, Material.REDSTONE_BLOCK, Materials.REDSTONE_SINGULARITY);
+            REDSTONE_OSCILLATOR = (SlimefunItemStack) p[0].getItem();
+            REDSTONE_SINGULARITY_OSCILLATOR = (SlimefunItemStack) p[1].getItem();
             outputs.add(Material.REDSTONE);
         }
 
         if (section.getBoolean("lapis")) {
-            registerOscillatorPair(plugin, "lapis", Material.LAPIS_LAZULI, Material.LAPIS_BLOCK, Materials.LAPIS_SINGULARITY);
+            Oscillator[] p = registerOscillatorPair(plugin, "lapis", Material.LAPIS_LAZULI, Material.LAPIS_BLOCK, Materials.LAPIS_SINGULARITY);
+            LAPIS_OSCILLATOR = (SlimefunItemStack) p[0].getItem();
+            LAPIS_SINGULARITY_OSCILLATOR = (SlimefunItemStack) p[1].getItem();
             outputs.add(Material.LAPIS_LAZULI);
         }
 
         if (section.getBoolean("emerald")) {
-            registerOscillatorPair(plugin, "emerald", Material.EMERALD, Material.EMERALD_BLOCK, Materials.EMERALD_SINGULARITY);
+            Oscillator[] p = registerOscillatorPair(plugin, "emerald", Material.EMERALD, Material.EMERALD_BLOCK, Materials.EMERALD_SINGULARITY);
+            EMERALD_OSCILLATOR = (SlimefunItemStack) p[0].getItem();
+            EMERALD_SINGULARITY_OSCILLATOR = (SlimefunItemStack) p[1].getItem();
             outputs.add(Material.EMERALD);
         }
 
         if (section.getBoolean("diamond")) {
-            registerOscillatorPair(plugin, "diamond", Material.DIAMOND, Material.DIAMOND_BLOCK, Materials.DIAMOND_SINGULARITY);
+            Oscillator[] p = registerOscillatorPair(plugin, "diamond", Material.DIAMOND, Material.DIAMOND_BLOCK, Materials.DIAMOND_SINGULARITY);
+            DIAMOND_OSCILLATOR = (SlimefunItemStack) p[0].getItem();
+            DIAMOND_SINGULARITY_OSCILLATOR = (SlimefunItemStack) p[1].getItem();
             outputs.add(Material.DIAMOND);
         }
 
@@ -117,7 +137,9 @@ public final class Quarries {
         }, 1, 6, outputs.toArray(new Material[0])).energyPerTick(300).register(plugin);
 
         if (section.getBoolean("quartz")) {
-            registerOscillatorPair(plugin, "quartz", Material.QUARTZ, Material.QUARTZ_BLOCK, Materials.QUARTZ_SINGULARITY);
+            Oscillator[] p = registerOscillatorPair(plugin, "quartz", Material.QUARTZ, Material.QUARTZ_BLOCK, Materials.QUARTZ_SINGULARITY);
+            QUARTZ_OSCILLATOR = (SlimefunItemStack) p[0].getItem();
+            QUARTZ_SINGULARITY_OSCILLATOR = (SlimefunItemStack) p[1].getItem();
             outputs.add(Material.QUARTZ);
         }
 
@@ -160,13 +182,15 @@ public final class Quarries {
         }, 64, 1, outputs.toArray(new Material[0])).energyPerTick(36000).register(plugin);
     }
 
-    private static void registerOscillatorPair(InfinityExpansion plugin, String configKey,
+    private static Oscillator[] registerOscillatorPair(InfinityExpansion plugin, String configKey,
             Material ore, Material oreBlock, SlimefunItemStack singularity) {
         double chance = InfinityExpansion.config().getDouble("quarry-options.oscillators." + configKey, 0, 1);
         double sChance = InfinityExpansion.config().getDouble("quarry-options.singularity-oscillators." + configKey, 0, 1);
-        Oscillator base = Oscillator.forOre(ore, chance);
-        base.register(plugin);
-        Oscillator.forSingularity(ore, oreBlock, sChance, base, singularity).register(plugin);
+        Oscillator osc = Oscillator.forOre(ore, chance);
+        osc.register(plugin);
+        Oscillator singOsc = Oscillator.forSingularity(ore, oreBlock, sChance, osc, singularity);
+        singOsc.register(plugin);
+        return new Oscillator[]{osc, singOsc};
     }
 
 }
