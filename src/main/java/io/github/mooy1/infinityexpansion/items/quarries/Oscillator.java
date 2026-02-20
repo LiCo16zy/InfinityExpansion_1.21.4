@@ -3,7 +3,6 @@ package io.github.mooy1.infinityexpansion.items.quarries;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import org.bukkit.Material;
@@ -24,7 +23,7 @@ public final class Oscillator extends SlimefunItem {
     private static final Map<String, Oscillator> OSCILLATORS = new HashMap<>();
 
     public final double chance;
-    public final ItemStack output;
+    public final Material output;
 
     @Nullable
     public static Oscillator getOscillator(@Nullable ItemStack item) {
@@ -34,53 +33,43 @@ public final class Oscillator extends SlimefunItem {
         return OSCILLATORS.get(StackUtils.getId(item));
     }
 
-    @Nonnull
-    public static SlimefunItemStack create(Material material, double chance) {
-        return new SlimefunItemStack(
-                "QUARRY_OSCILLATOR_" + material.name(),
-                material,
-                "&6" + MaterialHelper.getName(material) + " 生产加速器",
+    public static Oscillator forOre(Material ore, double chance) {
+        SlimefunItemStack item = new SlimefunItemStack(
+                "QUARRY_OSCILLATOR_" + ore.name(),
+                ore,
+                "&6" + MaterialHelper.getName(ore) + " 生产加速器",
                 "&7放置在矿机中",
                 "&7提高 " + (chance * 100) + "% 挖到此矿的几率"
         );
-    }
-
-    @Nonnull
-    public static SlimefunItemStack create(Material material, Material material_block) {
-        return new SlimefunItemStack(
-            "QUARRY_SINGULARITY_OSCILLATOR_" + material.name(),
-            material_block,
-            "&b" + MaterialHelper.getName(material) + " 奇点加速器",
-            "",
-            "&7奇点的力量融入了矿机..."
-        );
-    }
-
-    public Oscillator(SlimefunItemStack item, double chance) {
-        super(Groups.MAIN_MATERIALS, item, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
+        ItemStack[] recipe = {
                 Materials.MACHINE_PLATE, SlimefunItems.BLISTERING_INGOT_3, Materials.MACHINE_PLATE,
-                SlimefunItems.BLISTERING_INGOT_3, new ItemStack(item.getType()), SlimefunItems.BLISTERING_INGOT_3,
+                SlimefunItems.BLISTERING_INGOT_3, new ItemStack(ore), SlimefunItems.BLISTERING_INGOT_3,
                 Materials.MACHINE_PLATE, SlimefunItems.BLISTERING_INGOT_3, Materials.MACHINE_PLATE
-        });
-        OSCILLATORS.put(getId(), this);
-        this.chance = chance;
-        this.output = new ItemStack(item.getType());
+        };
+        return new Oscillator(item, recipe, chance, ore);
     }
 
-    public Oscillator(SlimefunItemStack item, double chance, SlimefunItemStack oscillator, ItemStack singularity) {
-        super(
-            Groups.MAIN_MATERIALS,
-            item,
-            RecipeType.ENHANCED_CRAFTING_TABLE,
-            new ItemStack[] {
-                Materials.VOID_INGOT, oscillator, Materials.VOID_INGOT,
-                oscillator, singularity, oscillator,
-                Materials.VOID_INGOT, oscillator, Materials.VOID_INGOT
-            }
+    public static Oscillator forSingularity(Material ore, Material oreBlock, double chance, Oscillator base, SlimefunItemStack singularity) {
+        SlimefunItemStack item = new SlimefunItemStack(
+                "QUARRY_SINGULARITY_OSCILLATOR_" + ore.name(),
+                oreBlock,
+                "&b" + MaterialHelper.getName(ore) + " 奇点加速器",
+                "",
+                "&7奇点的力量融入了矿机..."
         );
+        ItemStack[] recipe = {
+                Materials.VOID_INGOT, base.getItem(), Materials.VOID_INGOT,
+                base.getItem(), singularity, base.getItem(),
+                Materials.VOID_INGOT, base.getItem(), Materials.VOID_INGOT
+        };
+        return new Oscillator(item, recipe, chance, ore);
+    }
+
+    private Oscillator(SlimefunItemStack item, ItemStack[] recipe, double chance, Material output) {
+        super(Groups.MAIN_MATERIALS, item, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
         OSCILLATORS.put(getId(), this);
         this.chance = chance;
-        this.output = new ItemStack(oscillator.getType());
+        this.output = output;
     }
 
 }
