@@ -142,6 +142,9 @@ public final class MobSimulationChamber extends TickingMenuBlock implements Ener
         ItemStack input = inv.getItemInSlot(CARD_SLOT);
 
         if (input == null) {
+            if (inv.hasViewer()) {
+                inv.replaceExistingItem(STATUS_SLOT, NO_CARD);
+            }
             return;
         }
 

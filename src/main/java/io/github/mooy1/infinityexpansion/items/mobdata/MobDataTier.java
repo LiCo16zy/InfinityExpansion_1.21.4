@@ -5,13 +5,13 @@ import org.bukkit.Material;
 public enum MobDataTier {
 
     // ex: chicken
-    PASSIVE(1, 75, Material.GREEN_CANDLE),
+    PASSIVE(1, 75, Material.LIME_CANDLE),
 
     // ex: slime
     NEUTRAL(1, 150, Material.BLUE_CANDLE),
 
     // ex: zombie
-    HOSTILE(2, 300, Material.RED_CANDLE),
+    HOSTILE(2, 300, Material.ORANGE_CANDLE),
 
     // ex: enderman
     ADVANCED(4, 600, Material.RED_CANDLE),

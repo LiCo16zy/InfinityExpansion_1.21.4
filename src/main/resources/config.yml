@@ -45,7 +45,7 @@ mob-simulation-options:
 
   # 是否启用生物模拟芯片堆叠 (耗电同步增加)
   # 堆叠数量取决于模拟空间的电容大小, 且至多 64 个
-  enable-chip-stacking: true
+  enable-chip-stacking: false
 
   # 设置模拟空间电容大小 (默认: 20000J)
   chamber-capacitor: 20000

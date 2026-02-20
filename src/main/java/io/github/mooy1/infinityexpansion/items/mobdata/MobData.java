@@ -27,7 +27,7 @@ public final class MobData {
 
     public static final SlimefunItemStack EMPTY_DATA_CARD = new SlimefunItemStack(
             "EMPTY_DATA_CARD",
-            Material.BLUE_CANDLE,
+            Material.LIGHT_BLUE_CANDLE,
             "&8空生物芯片",
             "&7需要注入生物掉落物"
     );
